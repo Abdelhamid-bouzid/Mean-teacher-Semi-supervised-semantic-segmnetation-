@@ -26,6 +26,7 @@ config = {
     
     "ema_factor"     : 0.95,
     "consis_coef"    : 0.3,
+    "alpha"          : 0.1,
     
     "iteration"      : 50000,
     "warmup"         : 20000,

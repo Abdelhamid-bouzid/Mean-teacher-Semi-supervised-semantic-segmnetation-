@@ -76,6 +76,7 @@ def learning_function(S_model,ssl_obj,l_train,test, u_train):
         print('##########################################################################################################')
         
         if iteration%config["test_model_cycel"]==0:
+            S_model     = S_model.to(device=device, dtype=torch.float)
             S_model.eval()
             test_iou  = 0
             for l_input, l_target in test_loader:

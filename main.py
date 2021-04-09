@@ -10,7 +10,7 @@ from learning_function import learning_function
 from torchsummary import summary
 from plot import plot
 from Unet import UNet
-from mean_teacher import MT
+from ict import ICT
 from config import config
 import transform
 
@@ -38,7 +38,7 @@ S_model = UNet(2,transform_fn)
 #####################################################################################################
 T_model = UNet(2,transform_fn)
 T_model.load_state_dict(S_model.state_dict())
-ssl_obj = MT(T_model, config["ema_factor"])
+ssl_obj = ICT(config["alpha"], T_model, config["ema_factor"])
 
 
 Loss_train,Loss_test = learning_function(S_model,ssl_obj,l_train,test, u_train)
